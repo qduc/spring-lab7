@@ -1,0 +1,7 @@
+rootProject.name = 'lab7'
+include 'application'
+findProject(':application')?.name = 'lab7'
+include 'data'
+include 'api'
+include 'service'
+
