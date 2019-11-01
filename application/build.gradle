@@ -14,6 +14,9 @@ repositories {
 }
 
 dependencies {
+    implementation project(':api')
+    implementation project(':service')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-devtools'
 
