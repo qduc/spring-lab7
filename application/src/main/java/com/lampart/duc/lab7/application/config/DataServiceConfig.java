@@ -8,10 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DataServiceConfig {
 
-    private UserDataServiceImpl userDataService;
-
     @Bean
-    UserDataService userDataService() {
+    UserDataService userDataService(UserDataServiceImpl userDataService) {
         return userDataService;
     }
 }
