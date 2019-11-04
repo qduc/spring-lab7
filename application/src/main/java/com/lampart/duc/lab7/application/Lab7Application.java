@@ -1,6 +1,10 @@
 package com.lampart.duc.lab7.application;
 
+import com.github.javafaker.Faker;
+import com.lampart.duc.lab7.service.data.UserDataServiceImpl;
+import com.lampart.duc.lab7.service.dto.UserDto;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -24,5 +28,28 @@ public class Lab7Application {
     @Bean
     public LayoutDialect layoutDialect() {
         return new LayoutDialect();
+    }
+
+    @Bean
+    public Faker faker() {
+        return new Faker();
+    }
+
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
+    @Bean
+    CommandLineRunner demo(UserDataServiceImpl userDataService, Faker faker) {
+        return (args) -> {
+            UserDto user1 = new UserDto(faker.name().fullName(), faker.name().username(), faker.internet().safeEmailAddress(), "123");
+            UserDto user2 = new UserDto(faker.name().fullName(), faker.name().username(), faker.internet().safeEmailAddress(), "123");
+            UserDto user3 = new UserDto(faker.name().fullName(), faker.name().username(), faker.internet().safeEmailAddress(), "123");
+
+            userDataService.save(user1);
+            userDataService.save(user2);
+            userDataService.save(user3);
+        };
     }
 }

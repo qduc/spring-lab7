@@ -1,6 +1,7 @@
 package com.lampart.duc.lab7.application.controller;
 
-import com.lampart.duc.lab7.api.data.UserDataService;
+import com.lampart.duc.lab7.api.data.DataService;
+import com.lampart.duc.lab7.service.dto.UserDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +13,9 @@ public class UserController {
     public static final String urlPrefix = "/user";
     public static final String viewRoot = "user/";
 
-    private UserDataService userDataService;
+    private DataService<UserDto> userDataService;
 
-    public UserController(UserDataService userDataService) {
+    public UserController(DataService<UserDto> userDataService) {
         this.userDataService = userDataService;
     }
 

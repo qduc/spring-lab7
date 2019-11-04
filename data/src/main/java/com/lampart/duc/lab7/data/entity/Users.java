@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-public class Users {
+public class Users implements JpaEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +26,8 @@ public class Users {
   private Date createdAt;
 
   private Date updatedAt;
+
+  public Users() {}
 
   public Users(String name, String username, String email, String password) {
     this.name = name;
