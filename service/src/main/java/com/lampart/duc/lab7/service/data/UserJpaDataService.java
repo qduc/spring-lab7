@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserDataServiceImpl implements DataService<UserDto> {
+public class UserJpaDataService implements DataService<UserDto> {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private DtoEntityAdapter<UserDto, Users> dtoEntityAdapter;
+    private final DtoEntityAdapter<UserDto, Users> dtoEntityAdapter;
 
-    public UserDataServiceImpl(UserRepository userRepository, DtoEntityAdapter<UserDto, Users> dtoEntityAdapter) {
+    public UserJpaDataService(UserRepository userRepository, DtoEntityAdapter<UserDto, Users> dtoEntityAdapter) {
         this.userRepository = userRepository;
         this.dtoEntityAdapter = dtoEntityAdapter;
     }
@@ -27,7 +27,7 @@ public class UserDataServiceImpl implements DataService<UserDto> {
     @Override
     public Optional<UserDto> findById(Long id) {
         Optional<Users> optional = userRepository.findById(id);
-        return optional.map(users -> dtoEntityAdapter.toDto(users));
+        return optional.map(dtoEntityAdapter::toDto);
     }
 
     @Override

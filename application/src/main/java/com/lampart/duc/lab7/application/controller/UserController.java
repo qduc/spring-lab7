@@ -13,7 +13,7 @@ public class UserController {
     public static final String urlPrefix = "/user";
     public static final String viewRoot = "user/";
 
-    private DataService<UserDto> userDataService;
+    private final DataService<UserDto> userDataService;
 
     public UserController(DataService<UserDto> userDataService) {
         this.userDataService = userDataService;
