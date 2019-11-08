@@ -10,11 +10,11 @@
         <div class="card-body">
             <h5 class="card-title m-b-0">Static Table</h5>
 
-            <div class="row">
+            <div>
                 <a class="btn btn-primary" th:href="@{/user/add}">Add User</a>
             </div>
 
-            <div class="row">
+            <div>
                 <table class="table">
                     <thead>
                     <tr>
@@ -22,6 +22,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +31,10 @@
                         <td th:text="${user.name}">Mark</td>
                         <td th:text="${user.username}">Otto</td>
                         <td th:text="${user.email}">@mdo</td>
+                        <td>
+                            <a th:href="@{/user/edit/{id}(id=${user.id})}" class="btn btn-cyan btn-sm">Edit</a>
+                            <a th:href="@{/user/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
