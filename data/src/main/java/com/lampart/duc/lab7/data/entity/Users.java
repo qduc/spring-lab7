@@ -29,6 +29,15 @@ public class Users implements JpaEntity {
 
   public Users() {}
 
+  public Users(String name, String username, String email, String password, Date createdAt, Date updatedAt) {
+    this.name = name;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+  }
+
   public Users(String name, String username, String email, String password) {
     this.name = name;
     this.username = username;

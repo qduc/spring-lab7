@@ -10,11 +10,13 @@ public class UserDtoJpaEntityAdapter implements DtoEntityAdapter<UserDto, Users>
 
     @Override
     public Users toEntity(UserDto dto) {
-        return new Users(dto.getName(), dto.getUsername(), dto.getEmail(), dto.getPassword());
+        Users entity = new Users(dto.getName(), dto.getUsername(), dto.getEmail(), dto.getPassword(), dto.getCreatedAt(), dto.getUpdatedAt());
+        entity.setId(dto.getId());
+        return entity;
     }
 
     @Override
     public UserDto toDto(Users entity) {
-        return new UserDto(entity.getName(), entity.getUsername(), entity.getEmail(), entity.getPassword());
+        return new UserDto(entity.getId(), entity.getName(), entity.getUsername(), entity.getEmail(), entity.getPassword(), entity.getCreatedAt(), entity.getUpdatedAt());
     }
 }
