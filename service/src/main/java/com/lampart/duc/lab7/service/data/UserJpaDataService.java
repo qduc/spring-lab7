@@ -45,4 +45,9 @@ public class UserJpaDataService implements DataService<UserDto> {
         Users entity = dtoEntityAdapter.toEntity(dto);
         return dtoEntityAdapter.toDto(userRepository.save(entity));
     }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 }

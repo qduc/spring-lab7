@@ -23,12 +23,14 @@ public class UserController {
 
     @RequestMapping("")
     public String index(Model model) {
+        model.addAttribute("title", "User List");
         model.addAttribute("users", userDataService.findAll());
         return viewRoot + "index";
     }
 
     @GetMapping("add")
     public String addGet(Model model) {
+        model.addAttribute("title", "Add User");
         model.addAttribute("user", new UserDto());
         return viewRoot + "add_edit";
     }
@@ -44,6 +46,7 @@ public class UserController {
             @PathVariable(value="id") Long id,
             Model model
     ) {
+        model.addAttribute("title", "Edit User");
         Optional<UserDto> user = userDataService.findById(id);
         if (!user.isPresent()) {
             return "error/404";
@@ -60,6 +63,14 @@ public class UserController {
     ) {
         userDto.setId(id);
         userDataService.save(userDto);
+        return "redirect:" + urlPrefix;
+    }
+
+    @GetMapping("delete/{id}")
+    public String deletePost(
+            @PathVariable(value="id") Long id
+    ) {
+        userDataService.deleteById(id);
         return "redirect:" + urlPrefix;
     }
 }

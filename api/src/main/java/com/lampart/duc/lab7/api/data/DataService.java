@@ -9,4 +9,6 @@ public interface DataService<T> {
     Iterable<T> findAll();
 
     T save(T entity);
+
+    void deleteById(Long id);
 }
